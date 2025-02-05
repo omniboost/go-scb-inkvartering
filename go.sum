@@ -1,0 +1,4 @@
+github.com/omniboost/schema v1.1.1-0.20211111150515-2e872025e306 h1:9GMWNGwzd6895ErDvWeIipKuaEQ+0l3thaLm89u+El8=
+github.com/omniboost/schema v1.1.1-0.20211111150515-2e872025e306/go.mod h1:p/BKiaWM4vXHpCIdM2HAnmxb+3q95jb2KwvX9bK1OoY=
+gopkg.in/guregu/null.v3 v3.5.0 h1:xTcasT8ETfMcUHn0zTvIYtQud/9Mx5dJqD554SZct0o=
+gopkg.in/guregu/null.v3 v3.5.0/go.mod h1:E4tX2Qe3h7QdL+uZ3a0vqvYwKQsRSQKM5V4YltdgH9Y=
