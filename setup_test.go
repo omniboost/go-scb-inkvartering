@@ -1,4 +1,4 @@
-package inkvartering_test
+package scb_inkvartering_test
 
 import (
 	"log"
@@ -6,11 +6,11 @@ import (
 	"os"
 	"testing"
 
-	inkvartering "github.com/omniboost/go-inkvartering"
+	scb_inkvartering "github.com/omniboost/go-scb-inkvartering"
 )
 
 var (
-	client *inkvartering.Client
+	client *scb_inkvartering.Client
 )
 
 func TestMain(m *testing.M) {
@@ -21,7 +21,7 @@ func TestMain(m *testing.M) {
 	debug := os.Getenv("DEBUG")
 	var baseURL *url.URL
 
-	client = inkvartering.NewClient(nil)
+	client = scb_inkvartering.NewClient(nil)
 	client.SetApiKey(apiKey)
 
 	if debug != "" {

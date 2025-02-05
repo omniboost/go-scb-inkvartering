@@ -1,11 +1,11 @@
-package inkvartering
+package scb_inkvartering
 
 import (
 	"net/http"
 	"net/url"
 	"strings"
 
-	"github.com/omniboost/go-inkvartering/utils"
+	"github.com/omniboost/go-scb-inkvartering/utils"
 )
 
 func (c *Client) NewPostSurveyUploadCSVRequest() PostSurveyUploadCSVRequest {

@@ -1,4 +1,4 @@
-package inkvartering
+package scb_inkvartering
 
 import "net/url"
 

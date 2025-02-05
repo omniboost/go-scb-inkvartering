@@ -1,4 +1,4 @@
-module github.com/omniboost/go-inkvartering
+module github.com/omniboost/go-scb-inkvartering
 
 go 1.23.6
 

@@ -1,1 +1,1 @@
-package inkvartering
+package scb_inkvartering

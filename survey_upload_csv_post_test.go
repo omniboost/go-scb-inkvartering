@@ -1,4 +1,4 @@
-package inkvartering_test
+package scb_inkvartering_test
 
 import (
 	"encoding/json"

@@ -1,4 +1,4 @@
-package inkvartering
+package scb_inkvartering
 
 import (
 	"bytes"
@@ -18,7 +18,7 @@ import (
 
 const (
 	libraryVersion = "0.0.1"
-	userAgent      = "go-inkvartering/" + libraryVersion
+	userAgent      = "go-scb-inkvartering/" + libraryVersion
 	mediaType      = "application/json"
 	charset        = "utf-8"
 )
