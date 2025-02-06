@@ -10,6 +10,27 @@ type Date struct {
 	time.Time
 }
 
+func (d *Date) UnmarshalJSON(text []byte) (err error) {
+	var value string
+	err = json.Unmarshal(text, &value)
+	if err != nil {
+		return err
+	}
+
+	if value == "" {
+		return nil
+	}
+
+	d.Time, err = time.Parse("200601", value)
+	if err == nil {
+		return nil
+	}
+
+	// lastly try standard date
+	d.Time, err = time.Parse(time.RFC3339, value)
+	return err
+}
+
 func (d Date) MarshalSchema() string {
 	return d.Time.Format("2006-01-02")
 }

@@ -1,6 +1,7 @@
 package scb_inkvartering
 
 import (
+	"encoding/json"
 	"net/http"
 	"net/url"
 	"strings"
@@ -57,12 +58,12 @@ func (c *Client) NewPostSurveyUploadCSVPathParams() *PostSurveyUploadCSVPathPara
 }
 
 type PostSurveyUploadCSVPathParams struct {
-	Period string `schema:"period"`
+	Period DateTime `schema:"period"`
 }
 
 func (p *PostSurveyUploadCSVPathParams) Params() map[string]string {
 	return map[string]string{
-		"period": p.Period,
+		"period": p.Period.Format("200601"),
 	}
 }
 
@@ -106,7 +107,7 @@ func (r *PostSurveyUploadCSVRequest) NewResponseBody() *PostSurveyUploadCSVRespo
 	return &PostSurveyUploadCSVResponseBody{}
 }
 
-type PostSurveyUploadCSVResponseBody struct{}
+type PostSurveyUploadCSVResponseBody SurveyUploadCVSResponse
 
 func (r *PostSurveyUploadCSVRequest) URL() *url.URL {
 	u := r.client.GetEndpointURL("survey-upload-csv/{{.period}}", r.PathParams())
@@ -128,18 +129,17 @@ func (r *PostSurveyUploadCSVRequest) Do() (PostSurveyUploadCSVResponseBody, erro
 		return *r.NewResponseBody(), err
 	}
 
-	responseBody := r.NewResponseBody()
-	_, err = r.client.Do(req, responseBody)
+	// Reponse is string, so we unmarshal it to json
+	var rawJSON string
+	_, err = r.client.Do(req, &rawJSON)
 	if err != nil {
-		return *responseBody, err
+		return *r.NewResponseBody(), err
 	}
 
-	// extra validatie
-	// for _, o := range responseBody.Orders {
-	// 	for _, e := range o.Errors {
-	// 		err = multierror.Append(err, errors.New(e))
-	// 	}
-	// }
+	responseBody := r.NewResponseBody()
+	if err := json.Unmarshal([]byte(rawJSON), responseBody); err != nil {
+		return *r.NewResponseBody(), err
+	}
 
-	return *responseBody, err
+	return *responseBody, nil
 }
